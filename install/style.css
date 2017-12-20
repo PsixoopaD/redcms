@@ -1,0 +1,172 @@
+body{
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+  font-size: small;
+ background: #1e1e1e; /* Old browsers */
+  color: #FFFFFF;
+  padding: 0px;
+  max-width: 620px;
+  margin: 0px auto;
+}
+
+a {
+   color:  #8A1010;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input[type="submit"] {
+transition: all 0.3s;
+margin-top: 5px;
+border-radius: 4px;
+color: #FFFFFF;
+background-color: #1A538A;
+border: 0;
+min-width: 75px;
+padding: 8px 18px;
+cursor: pointer;
+margin-left:3px;
+}
+
+input[type="submit"]:hover {
+   color: #000;
+background-color: #FFF;
+box-shadow: 0 0 1px gray;
+}
+
+input[type="submit"]:disabled {
+    color: #555555;
+    background-color: #F3F3F3;
+    border-bottom: 1px #C7C7C7 solid;
+}
+
+label{
+    line-height: 20px;
+    cursor: pointer;
+}
+
+label:hover{
+    color: #0344FF;
+}
+
+label > input[type="radio"]{
+    margin: 0 5px;
+    vertical-align: middle;
+}
+
+label > img{
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+textarea {
+    width: 98%;
+    max-width: 98%;
+    min-width: 98%;
+    height: 4pc;
+    min-height: 4pc;
+    margin: auto;
+}
+
+h1{
+margin: 0px;
+padding: 8px;
+overflow: hidden;
+text-align: center;
+background: #FFFFFF url(fon.png) left fixed !important;
+background-position: 0px -1575px !important;
+}
+ 
+h1 {
+    font-size: 2.1em;
+}
+ 
+@media screen and (max-width: 50em) {
+    h1 {
+        font-size:2em;
+    }
+}
+ 
+@media screen and (max-width: 40em) {
+    h1 {
+        font-size:1.5em;
+    }
+}
+ 
+@media screen and (max-width: 30em) {
+    h1 {
+        font-size:1.2em;
+    }
+}
+div.page_foot {
+text-align: right;
+padding: 15px;
+background: #FFFFFF url(http://img2.goodfon.ru/original/1920x1080/b/c8/siniy-gradienty-tekstury.jpg) left fixed !important;
+background-position: 0px -1628px !important;
+}
+
+form.form_header{
+    background-color: #F0F0F0;
+    margin: 0;
+    padding: 5px;
+}
+
+form.form_content{ 
+background: #FFF;
+padding: 10px;
+color: black;
+
+}
+
+div.form_content{
+    margin: 10px 5px;
+    padding: 10px 5px;
+    border-left: 4px solid #236DB4;
+}
+
+
+.update {
+margin-bottom: 1px;
+text-align: center;
+} 
+.update a {
+transition: all .5s ease;
+display: inline-block;
+text-align: center;
+background: #fff;
+box-shadow: 0 0 1px rgb(203, 203, 203);
+margin: 1px 1px;
+padding: 2px;
+position: relative;
+}
+.update a:hover {
+background: #1a538a;}
+
+.update .update_img {
+display: block;
+height: 140px;
+margin: auto;
+background-repeat: no-repeat;
+background-size: cover;
+-webkit-background-size: cover;
+-o-background-size: cover;
+-moz-background-size: cover;
+background-position: center;
+max-width: 180px;
+transition: 1s ease;
+}
+.update .update_img:hover {
+transform: scale(3);
+z-index: 999;
+}
+.sp { 
+margin-left: 10px;
+font-size: 16px;
+font-weight: bold;
+border-bottom: 1px solid rgb(207, 207, 207);
+display: block;
+padding: 3px;
+}

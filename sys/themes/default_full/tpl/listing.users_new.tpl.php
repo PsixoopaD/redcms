@@ -1,0 +1,1 @@
+<?=$content?><font color="red"><b>NEW</b></font> 

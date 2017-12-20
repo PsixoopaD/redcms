@@ -1,0 +1,1 @@
+ <div class="newss"><?=$content?><font color="red"><b>NEW</b></font> </div>

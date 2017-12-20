@@ -1,0 +1,28 @@
+<?php
+if (defined('DCMS')) {
+    $cron_pseudo = true;
+} else {
+    $cron_pseudo = false;
+    require_once dirname(__FILE__).'/inc/start.php';
+}
+
+function execute_cron_file($path)
+{
+    global $db, $dcms, $log_of_visits;
+    require $path;
+}
+
+if (!cache_events::get('cron')) {
+    cache_events::set('cron', TIME, 10);
+    
+
+    $cron_files = (array) @glob(H.'/sys/inc/cron/*.php');
+    foreach ($cron_files as $path) {
+        $name = basename($path, '.php');
+      
+        execute_cron_file($path);
+       
+    }
+    
+   
+}
