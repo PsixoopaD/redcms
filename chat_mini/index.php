@@ -5,6 +5,7 @@ $doc = new document_json();
 else
 $doc = new document();
 $doc->title = __('Мини чат');
+
 $pages = new pages($db->query("SELECT COUNT(*) FROM `chat_mini`")->fetchColumn());
 $can_write = true;
 if (!$user->is_writeable) {
@@ -20,7 +21,10 @@ if (!antiflood::useToken($_POST['token'], 'chat_mini')) {
 // нет токена (обычно, повторная отправка формы)
 } elseif ($dcms->censure && $mat = is_valid::mat($message)) {
 $doc->err(__('Обнаружен мат: %s', $mat));
-} elseif ($message) {
+} elseif ($user->group < 2 && (empty($_POST ['captcha']) || empty($_POST ['captcha_session']) || !captcha::check($_POST ['captcha'], $_POST ['captcha_session']))){
+        $doc->err(__('Проверочное число введено неверно'));
+    } elseif ($message) {
+
 $user->balls += $dcms->add_balls_chat ;
 $res = $db->prepare("INSERT INTO `chat_mini` (`id_user`, `time`, `message`) VALUES (?, ?, ?)");
 $res->execute(Array($user->id, TIME, $message));
@@ -54,11 +58,12 @@ $message_form = "[quote id_user=\"{$ank->id}\" time=\"{$message['time']}\"]{$mes
 }
 }
 if (!AJAX) {
-$form = new form('?' . passgen());
+$form = new form(new url());
 $form->refresh_url('?' . passgen());
 $form->setAjaxUrl('?');
 $form->hidden('token', antiflood::getToken('chat_mini'));
 $form->textarea('message', __('Сообщение'), $message_form, true);
+if($user->group < 2) $form->captcha();
 $form->button(__('Отправить'), 'send', false);
 $form->display();
 }
