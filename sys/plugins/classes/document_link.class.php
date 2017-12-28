@@ -18,5 +18,6 @@ class document_link
         $this->name = $name;
         $this->url = (string)$url;
         $this->selected = $selected;
+        return $this;
     }
 }

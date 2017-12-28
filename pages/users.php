@@ -88,28 +88,28 @@ if ($arr = $q->fetchAll()) {
         $p_user = new user($ank['id']);
         $post->title = $p_user->nick();
         $post->url = '/profile.view.php?id=' . $p_user->id;
- $post->image= $p_user->ava();
+        $post->image= $p_user->ava();
         switch ($order) {
             case 'id':
-                $post->content[] = '[b]' . 'ID: ' . $p_user->id . '[/b]';
+                $post->content .= '[b]' . 'ID: ' . $p_user->id . '[/b]';
                 break;
             case 'group':
-                $post->content[] = '[b]' . $p_user->group_name . '[/b]';
+                $post->content .= '[b]' . $p_user->group_name . '[/b]';
                 break;
             case 'rating':
-                $post->content[] = '[b]' . __('Рейтинг') . ': ' . $p_user->rating . '[/b]';
+                $post->content .= '[b]' . __('Рейтинг') . ': ' . $p_user->rating . '[/b]';
                 break;
                 break;
             case 'ank_g_r':
-                $post->content[] = '[b]' . (((int) $p_user->ank_g_r > 0) ? __('Дата рождения') . ": $p_user->ank_d_r.$p_user->ank_m_r.$p_user->ank_g_r (" . misc::get_age($p_user->ank_g_r, $p_user->ank_m_r, $p_user->ank_d_r) . ')' : __('День рождения').": $p_user->ank_d_r " . misc::getLocaleMonth($p_user->ank_m_r)) . '[/b]';
+                $post->content .= '[b]' . (((int) $p_user->ank_g_r > 0) ? __('Дата рождения') . ": $p_user->ank_d_r.$p_user->ank_m_r.$p_user->ank_g_r (" . misc::get_age($p_user->ank_g_r, $p_user->ank_m_r, $p_user->ank_d_r) . ')' : __('День рождения').": $p_user->ank_d_r " . misc::getLocaleMonth($p_user->ank_m_r)) . '[/b]';
                 break;
             case 'donate_rub':
-                $post->content[] = '[b]' . __('Сумма пожертвований: %s руб.', $p_user->donate_rub) . '[/b]';
+                $post->content .= '[b]' . __('Сумма пожертвований: %s руб.', $p_user->donate_rub) . '[/b]';
                 break;
         }
 
-        $post->content[] = '[small]' . __('Дата регистрации') . ': ' . date('d-m-Y', $p_user->reg_date) . '[/small]';
-        $post->content[] = '[small]' . __('Последний визит') . ': ' . ($p_user->last_visit ? misc::when($p_user->last_visit) : misc::when($p_user->reg_date)) . '[/small]';
+        $post->content .= '[small]' . __('Дата регистрации') . ': ' . date('d-m-Y', $p_user->reg_date) . '[/small]';
+        $post->content .= '[small]' . __('Последний визит') . ': ' . ($p_user->last_visit ? misc::when($p_user->last_visit) : misc::when($p_user->reg_date)) . '[/small]';
     }
 
     if ($order == 'ank_g_r') { /* fix */

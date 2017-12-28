@@ -38,13 +38,13 @@ class alignedxhtml {
                 // модификатор 's' не забываем: точка тут должна совпадать 
                 // и с символом новой строки; модификатор 'x' позволяет добавлять в шаблон
                 // необрабатываемые пробелы и переводы строки, чтобы он лучше читался
-                create_function(
-                        '$matches', '$tagbody = $matches[3];
-                $tagbody = str_replace("\n", "\x01", $tagbody);
-                $tagbody = str_replace("<", "\x02", $tagbody);
-                $tagbody = str_replace(">", "\x03", $tagbody);
-                return $matches[1] . $tagbody . $matches[4];'
-                ), $xhtml);
+                function($matches){
+                    $tagbody = $matches[3];
+                    $tagbody = str_replace("\n", "\x01", $tagbody);
+                    $tagbody = str_replace("<", "\x02", $tagbody);
+                    $tagbody = str_replace(">", "\x03", $tagbody);
+                    return $matches[1] . $tagbody . $matches[4];
+                }, $xhtml);
 
         // регулярное выражение для HTML-тега 
         // (модификатор s не нужен, т.к. точки в выражении нет)
@@ -52,9 +52,7 @@ class alignedxhtml {
 
         // убираем переводы строки внутри тегов (заменяем на пробелы)
         $xhtml = preg_replace_callback(
-                $tagpattern, create_function(
-                        '$matches', 'return str_replace("\n", " ", $matches[0]);'
-                ), $xhtml);
+                $tagpattern, function ($matches){return str_replace("\n", " ", $matches[0]);}, $xhtml);
 
         // теперь обрабатыавем XHTML-код по одной строке 
         // (PHP это не умеет, поэтому пришлось вручную)
