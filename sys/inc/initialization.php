@@ -206,7 +206,7 @@ function __() {
     global $user_language_pack;
     $string = $user_language_pack->getString($args[0]);
 
-    if ($args_num == 1) {
+    if ($args_num == 1) { 
         // строка без параметров
         return $string;
     }

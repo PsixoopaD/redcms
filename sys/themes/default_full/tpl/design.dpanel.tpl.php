@@ -29,11 +29,12 @@ $post->image = $p_user->ava();
 $post->title = $p_user->nick();
 $post->url = '/profile.view.php?id=' . $p_user->id;
 $name = ($p_user->surname && $p_user->patronymic) ? "$p_user->surname $p_user->realname $p_user->patronymic": $p_user->realname . ($p_user->patronymic ? " " . $p_user->patronymic:'') . ($p_user->surname ? " " . $p_user->surname:'');
+$post->content = array();
 if($name){
 $nn = ($p_user->surname && $p_user->patronymic) ? __('ФИО') : __('Имя');
 $post->content[] = '[b]'. __('%s',$nn).' :[/b] '.__('%s',$name);
 }else {
-$post->content[] = '[b]'.__('ФИО').':[/b] '.__('не заполнено'); 
+$post->content[] = '[b]'.__('ФИО').':[/b] '.__('не заполнено');
 }
 $post->content[] = '[b]'.__('Должность').':[/b] '.__(' %s',$p_user->group_name);
 $q = DB::me()->prepare("SELECT `id_adm` FROM `log_of_user_status` WHERE `id_user` = ? ORDER BY `id` DESC LIMIT 1");
