@@ -1,1 +1,4 @@
 .idea/
+sys/tmp/
+sys/ini/iv.dat
+sys/ini/settings.ini
