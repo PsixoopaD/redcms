@@ -41,12 +41,12 @@ window.location.href = "/pages/bad_browser.html";
 <script charset="utf-8" src="/sys/themes/.common/elastic.js" type="text/javascript"></script>
 <script charset="utf-8" src="<?= $path ?>/js.js?6" type="text/javascript"></script>
 <meta name="generator" content="DCMS <?= dcms::getInstance()->version ?>"/>
-<? if ($description) { ?>
+<?php if ($description) { ?>
 <meta name="description" content="<?= $description ?>"/>
-<? } ?>
-<? if ($keywords) { ?>
+<?php } ?>
+<?php if ($keywords) { ?>
 <meta name="keywords" content="<?= $keywords ?>"/>
-<? } ?>
+<?php } ?>
 <script>
 user = <?=json_encode(current_user::getInstance()->getCustomData(array('id', 'group', 'mail_new_count', 'friend_new_count', 'nick')))?>;
     translates = {
@@ -98,12 +98,12 @@ display: none !important;
 </style>
 </head>
 <body class="theme_light_full theme_light" ng-controller="DcmsCtrl">
-<? if ($user->notif_zvuk) { ?>
+<?php if ($user->notif_zvuk) { ?>
 <audio id="audio_notify" preload="auto" class="ng-hide">
 <source src="/sys/themes/.common/notify.mp3"/>
 <source src="/sys/themes/.common/notify.ogg" />
 </audio>
-<? } ?>
+<?php } ?>
 <div id="main">
 <div id="top_part">
 <div id="header">
@@ -134,23 +134,23 @@ $fon = new user_fon($user->id);
 <div class="qx">
 <div class="aoh" style=" background-image: url(<?if($user->id){ echo $user->ava();}else{?>/sys/images/raznoe/pol_1.png<?}?>);"> </div>
 <span class="knopki">
-<?if($user->id){?>
+<?php if($user->id){?>
 <a class="title_a" href="/my.friends.php"><div class="knop"><i class="fa fa-users" aria-hidden="true"></i></div></a>
 <a class="title_a" href="/my.mail.php"><div class="knop"><i class="fa fa-envelope" aria-hidden="true"></i></div></a>
 <a class="title_a" href="/menu.user.php"><div class="knop"><i class="fa fa-cogs" aria-hidden="true"></i></div></a>
 <a class="title_a" href="/exit.php"><div class="knop"><i class="fa fa-power-off" aria-hidden="true"></i></div></a>
-<?}?>
-<?if(!$user->id){?><span class="aku">Добро пожаловать!<br/>Нас уже <?=DB::me()->query("SELECT COUNT(*) FROM `users`")->fetchColumn()?>!<br/> Давай и ты к нам!</span><?}else{?>
+<?php } ?>
+<?php if(!$user->id){?><span class="aku">Добро пожаловать!<br/>Нас уже <?=DB::me()->query("SELECT COUNT(*) FROM `users`")->fetchColumn()?>!<br/> Давай и ты к нам!</span><?}else{?>
 <span class="left_bar">
 <a class="nik_bar" href="/profile.view.php"><?=$user->nick?></a>
 <br/> Баллов: <?=$user->balls?><br/>
 <a ng-show="+user.friend_new_count" class="title_a white_a ng-hide" href="/my.friends.php" ng-bind="str.friends"></a>
 <a ng-show="+user.mail_new_count" class="title_a white_a ng-hide" href="/my.mail.php?only_unreaded" ng-bind="str.mail"></a>
 </span>
-<?}?>
+<?php } ?>
 </span>
 </div>
-<?if(!$user->id){?>
+<?php if(!$user->id){ ?>
 <div class="qw dj">
 <div class="fonknop">
 <div class="form" style="box-shadow: 0px 0px; margin: 0px; text-align: left; background: transparent none repeat scroll 0% 0%;">
@@ -174,12 +174,12 @@ $fon = new user_fon($user->id);
 <br>
 </form>
 </div>
-<?if ($dcms->vk_auth_enable && $dcms->vk_app_id && $dcms->vk_app_secret) {?><a class="vkform" href="https://oauth.vk.com/authorize?client_id=<?=$dcms->vk_app_id?>&scope=email&response_type=code&v=5.72&redirect_uri=http://<?=$_SERVER['HTTP_HOST']?>/vk.php">VK вход</a><?}?>
+<?php if ($dcms->vk_auth_enable && $dcms->vk_app_id && $dcms->vk_app_secret) {?><a class="vkform" href="https://oauth.vk.com/authorize?client_id=<?=$dcms->vk_app_id?>&scope=email&response_type=code&v=5.72&redirect_uri=http://<?=$_SERVER['HTTP_HOST']?>/vk.php">VK вход</a><?php }?>
 <a class="regform" href="/reg.php?return={{URL}}">Регистрация</a>
 
 </div>
 </div>
-<?}?>
+<?php }?>
 </div>
 
 <div class="qw temadn">
@@ -190,9 +190,9 @@ $fon = new user_fon($user->id);
 
 </div>
 
-<?$this->displaySection('chat_mini');?>
+<?php $this->displaySection('chat_mini');?>
 
-<?$this->displaySection('users');?>
+<?php $this->displaySection('users');?>
 
 
 
@@ -207,7 +207,7 @@ $fon = new user_fon($user->id);
 
 <div id="navigation" class="clearfix <?= IS_MAIN ? 'ng-hide' : '' ?>">
 <a class="nav_item" href='/'><i class="fa fa-home" aria-hidden="true" style="font-size: 18px;"></i></a>
-<?= $this->section($returns, '<a class="nav_item" href="{url}">{name}</a>', true); ?> <span class="nav_item"><?=mb_strimwidth($title, 0, 15, "..")?></span>
+<?= $this->section($returns, '<a class="nav_item" href="{url}">{name}</a>', true); ?> <span class="nav_item"><?= mb_strimwidth($title, 0, 15, "..")?></span>
 </div>
 <div id="tabs" class="<?= !$tabs ? 'ng-hide' : '' ?>">
 <?= $this->section($tabs, '<a class="tab sel{selected}" href="{url}">{name}</a>', true); ?>

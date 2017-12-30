@@ -1,5 +1,5 @@
 <div class="pages">
-    <?
+    <?php
     echo $page == 1 ? '<span class="invert border radius">1</span>' : '<a class="border radius" href="' . $link . 'page=1">1</a>';
     for ($i = max(2, $page - 4); $i < min($k_page, $page + 3); $i++) {
         if ($i == $page)

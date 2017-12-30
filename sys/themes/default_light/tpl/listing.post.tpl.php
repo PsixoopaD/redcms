@@ -1,4 +1,4 @@
-<?
+<?php
 if ($url)
     $title = '<a href="' . $url . '">' . $title . '</a>';
 
@@ -8,7 +8,7 @@ $post_actions = '<span class="actions">' . $this->section($actions, '<a href="{u
 ?>
 <div class="post<?= ($highlight ? ' highlight' : '') ?>">
     <table cellspacing="0" cellpadding="0" width="100%">
-        <? if ($image) { ?>            
+        <?php if ($image) { ?>            
             <tr>
                 <td class="image" rowspan="4">
                     <img src="<?= $image ?>" class="td_img" alt="" />
@@ -21,7 +21,7 @@ $post_actions = '<span class="actions">' . $this->section($actions, '<a href="{u
                     <?= $post_time ?>
                 </td>
             </tr>
-        <? } elseif ($icon) { ?>            
+        <?php } elseif ($icon) { ?>            
             <tr>
                 <td class="icon">
                     <img src="<?= $icon ?>" alt="" />
@@ -36,7 +36,7 @@ $post_actions = '<span class="actions">' . $this->section($actions, '<a href="{u
                 
                 </td>
             </tr>
-        <? } else { ?>
+        <?php } else { ?>
             <tr>
                 <td class="title">
                     <?= $title ?>
@@ -47,22 +47,22 @@ $post_actions = '<span class="actions">' . $this->section($actions, '<a href="{u
                     <?= $post_time ?>
                 </td>
             </tr>
-        <? } ?>
+        <?php } ?>
 
-        <? if ($content) { ?>
+        <?php if ($content) { ?>
             <tr>
                 <td class="content" colspan="10">
                     <?= $content ?>
                 </td>
             </tr>
-        <? } ?>
+        <?php } ?>
 
-        <? if ($bottom || $post_actions) { ?>
+        <?php if ($bottom || $post_actions) { ?>
             <tr>
                 <td class="bottom" colspan="10">
                     <?= $bottom ?>    <?= $post_actions ?>
                 </td>
             </tr>
-        <? } ?>
+        <?php } ?>
     </table>
 </div>

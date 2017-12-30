@@ -13,10 +13,10 @@
 <link rel="stylesheet" href="<?= $path ?>/theme_light.css" type="text/css"/>
 <link rel="stylesheet" href="<?= $path ?>/style.css?6" type="text/css"/>
 <meta name="viewport" content="minimum-scale=1.0,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<? if ($description) { ?>
-<meta name="description" content="<?= $description ?>" /><? } ?>
-<? if ($keywords) { ?>
-<meta name="keywords" content="<?= $keywords ?>" /><? } ?>
+<?php if ($description) { ?>
+<meta name="description" content="<?= $description ?>" /><?php } ?>
+<?php if ($keywords) { ?>
+<meta name="keywords" content="<?= $keywords ?>" /><?php } ?>
 <script>
 var translate = {
 'user_menu': "<?= __("Личное меню") ?>",
@@ -49,17 +49,17 @@ menu.slideToggle();
 </script>
 </head>
 <body class="theme_light">
-<? if ($user->notif_zvuk) { ?>
+<?php if ($user->notif_zvuk) { ?>
 <audio id="audio_notify" preload="auto" class="ng-hide">
 <source src="/sys/themes/.common/notify.mp3"/>
 <source src="/sys/themes/.common/notify.ogg" />
 </audio>
-<? } ?>
+<?php } ?>
 <div id="title"><div id="header-inner">
 <a  class="icon_men" href="/">  <div id="icon_men"></div></a> <a id="touch-menu" class="icon_menu" href="#">  <div id="icon_menu"></div></a>
 <center><?=$dcms->sitename?></center>
 <h1 id=""><?= $title ?></h1>
-<? $this->displaySection('after_title') ?>
+<?php $this->displaySection('after_title') ?>
 </div> 
 </div> 
 <div class="header-bottom">
@@ -67,31 +67,31 @@ menu.slideToggle();
 <div style="display: none;" class="menu">
 <a id="login" class="vhod" href="/login.php?return=<?= URL ?>"></a>
 <a id="reg" class="vhod" href="/reg.php?return=<?= URL ?>"></a>
-<? $this->displaySection('menu') ?>
+<?php $this->displaySection('menu') ?>
 </div>
 <div class="clear"></div>
 </div>
 </div>
 </div>
-<? $this->displaySection('after_title') ?>
-<?if($tabs){?><div id="tabs">
+<?php $this->displaySection('after_title') ?>
+<?php if($tabs){?><div id="tabs">
 <?= $this->section($tabs, '<a class="gradient_grey border tab sel{selected}" href="{url}">{name}</a>', true); ?>
 </div>
-<?}?>
-<? $this->displaySection('before_content') ?>
+<?php }?>
+<?php $this->displaySection('before_content') ?>
 <div id="content">
 <div id="messages">
 <?= $this->section($err, '<div class="blok_msg err">{text}</div>'); ?>
 <?= $this->section($msg, '<div class="blok_msg msg">{text}</div>'); ?>
 </div>
- <? if ($user->friend_new_count) { ?><div class="opovesh">
+ <?php if ($user->friend_new_count) { ?><div class="opovesh">
             <a id='user_friend' href='/my.friends.php'><?= __("Друзья") ?> +<span><?= $user->friend_new_count ?></span></a></div>
-        <? } ?>
-        <? if ($user->mail_new_count) { ?>
+        <?php } ?>
+        <?php if ($user->mail_new_count) { ?>
            <div class="opovesh"> <a id='user_mail' href='/my.mail.php?only_unreaded'><?= __("Почта") ?> +<span><?= $user->mail_new_count ?></span></a></div>
-        <? } ?>
+        <?php } ?>
 
-<?if(IS_MAIN){
+<?php if(IS_MAIN){
 $this->displaySection('news');
 $this->displaySection('chat_mini');
 $this->displaySection('forum');
@@ -99,18 +99,18 @@ $this->displaySection('forum');
 
 <?php if(!IS_MAIN)$this->displaySection('content') ?>
 </div>
-<? $this->displaySection('after_content') ?>
-<? $this->display('inc.foot.tpl') ?>
+<?php $this->displaySection('after_content') ?>
+<?php $this->display('inc.foot.tpl') ?>
 </div> 
 <div id="foot">
 <a class="count" href="/users.php" rel="nofollow">Нас уже <?
 $res = DB::me()->query("SELECT COUNT(*) FROM `users`");
 echo $res->fetchColumn();?></a>
 <a class="count" href="/online.users.php" rel="nofollow">На сайте
-<?  $res = DB::me()->query("SELECT COUNT(*) FROM `users_online`");
+<?php  $res = DB::me()->query("SELECT COUNT(*) FROM `users_online`");
 echo $res->fetchColumn();?></a>
 <a class="count" href="/online.guest.php" rel="nofollow">Гостей
-<?  $res =DB::me()->query("SELECT COUNT(*) FROM `guest_online` WHERE `conversions` >= '5'");
+<?php  $res =DB::me()->query("SELECT COUNT(*) FROM `guest_online` WHERE `conversions` >= '5'");
 echo $res->fetchColumn();?></a>
 <br/><?= $copyright ?>
 <br><?= __("Язык") ?>:<a href='/language.php?return={{URL}}' style='background-image: url(<?= $lang->icon ?>); background-repeat: no-repeat; background-position: 5px 2px; padding-left: 23px;'><?= $lang->name ?></a>

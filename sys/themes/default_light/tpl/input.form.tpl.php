@@ -7,7 +7,7 @@
     . '>'
     ?>
 
-    <?
+    <?php
     foreach ($el AS $element) {
         if ($element['title'])
            echo '<div class="form_title">' . $element['title'] . ':</div>';
@@ -21,7 +21,7 @@
                 <img id="captcha" src="/captcha.php?captcha_session=<?= $element['session'] ?>&amp;<?= SID ?>" alt="captcha" /><br />
                 <?= $lang->getString("Введите число с картинки") ?>:<br />
                 <input type="text" autocomplete="off" name="captcha" size="5" maxlength="5" />
-                <?
+                <?php
                 break;
             case 'input_text':
                 echo '<input type="text"' .
