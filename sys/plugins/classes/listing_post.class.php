@@ -17,7 +17,7 @@ class listing_post extends ui
     public $image = '';
     public $imageFull = '';
     public $title = '';
-    public $content = '';
+    public $content = [];
     public $bottom = '';
     public $highlight = false;
     public $actions = array();
@@ -33,7 +33,7 @@ class listing_post extends ui
      * @param string $title заголовок поста
      * @param string $content Содержимое поста
      */
-    public function __construct($type, $title = '', $content = '')
+    public function __construct($type, $title = '', $content = [])
     {
         parent::__construct();
         if(!$type){
