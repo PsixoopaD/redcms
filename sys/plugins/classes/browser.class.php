@@ -239,9 +239,12 @@ abstract class browser
         }
 
         if (preg_match('#Safari#i', $user_agent)) {
+        if(!preg_match('#Android#ui',$user_agent)){
             $ver = self::_browser_version($user_agent);
             $info['name'] = 'Safari' . ($ver ? ' ' . $ver : '');
-            $info['type'] = 'full';
+            $info['type'] = 'full'; } else { #	"Mozilla/5.0 (Linux; U; Android [VER]; [blablabla]) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 <- default Android browser.apk != Safari!
+            $info['name'] = 'Android';
+            $info['type'] = 'mobile'; }
         }
 
         if (preg_match('#SeaMonkey#i', $user_agent)) {
@@ -261,6 +264,11 @@ abstract class browser
 
         if (preg_match('#Chrome/([0-9]+\.[0-9]+)#i', $user_agent, $v)) {
             $info['name'] = 'Google Chrome ' . $v[1];
+            $info['type'] = 'full';
+        }
+
+        if (preg_match('#Vivaldi/([0-9]+\.[0-9]+)#i', $user_agent, $v)) {
+            $info['name'] = 'Vivaldi ' . $v[1];
             $info['type'] = 'full';
         }
 
