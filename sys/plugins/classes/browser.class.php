@@ -267,6 +267,11 @@ abstract class browser
             $info['type'] = 'full';
         }
 
+        if (preg_match('#Vivaldi/([0-9]+\.[0-9]+)#i', $user_agent, $v)) {
+            $info['name'] = 'Vivaldi ' . $v[1];
+            $info['type'] = 'full';
+        }
+
         if (preg_match('#YaBrowser/([0-9]+\.[0-9]+)#i', $user_agent, $v)) {
             $info['name'] = 'Yandex Browser ' . $v[1];
             $info['type'] = 'full';
